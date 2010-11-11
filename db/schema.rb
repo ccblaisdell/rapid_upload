@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(:version => 20101111200607) do
 
   create_table "images", :force => true do |t|
     t.string   "title"
-    t.string   "file"
+    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
