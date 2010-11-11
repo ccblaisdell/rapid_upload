@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Title</th>
     <th>Avatar</th>
     <th></th>
@@ -11,6 +12,7 @@
 
 <% @images.each do |image| %>
   <tr>
+    <td><%= image_tag image.avatar.thumb.url if image.avatar? %></td>
     <td><%= image.title %></td>
     <td><%= image.avatar %></td>
     <td><%= link_to 'Show', image %></td>
