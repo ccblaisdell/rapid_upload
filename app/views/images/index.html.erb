@@ -1,27 +1,13 @@
 <h1>Listing images</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th>Title</th>
-    <th>Avatar</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render 'form' %>
 
-<% @images.each do |image| %>
-  <tr>
-    <td><%= image_tag image.avatar.thumb.url if image.avatar? %></td>
-    <td><%= image.title %></td>
-    <td><%= image.avatar %></td>
-    <td><%= link_to 'Show', image %></td>
-    <td><%= link_to 'Edit', edit_image_path(image) %></td>
-    <td><%= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Image', new_image_path %>
+<ul id="images">
+  <% @images.each do |image| %>
+    <li>
+      <%= image_tag image.avatar.thumb.url if image.avatar? %>
+      <%= image.title %>
+      <%= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete %>
+    </li>
+  <% end %>
+</ul>

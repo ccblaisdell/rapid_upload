@@ -3,6 +3,7 @@ class ImagesController < ApplicationController
   # GET /images.xml
   def index
     @images = Image.all
+    @image = Image.new
 
     respond_to do |format|
       format.html # index.html.erb
