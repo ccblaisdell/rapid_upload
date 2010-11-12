@@ -1,5 +1,5 @@
 <li>
-  <%= link_to( image_tag(image.avatar.url(:thumb)), image) if image.avatar? %>
+  <%= link_to( image_tag(image.avatar.thumb.url), image) if image.avatar? %>
   <%= image.title %>
   <%= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete %>
   <%= link_to 'Show', image %>
