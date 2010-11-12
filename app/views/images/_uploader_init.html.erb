@@ -1,0 +1,26 @@
+<script>
+  $(function() {  
+    // encode the session into a Flash-save format
+    <% arr = [] %>
+    <% request.env['HTTP_COOKIE'].each_char{|c| arr.push(c[0].to_s)} %>
+    <% session = arr.join("x") %>
+
+    $('#image_avatar').uploadify ({
+      script          : '/images.js',
+      uploader        : '/javascripts/uploadify.swf',
+      multi           : true,
+      fileDataName    : 'image[avatar]',
+      auto            : true,
+      scriptData      : {
+        'session_encoded': '<%= session %>', 
+        'authenticity_token': encodeURIComponent('<%= u form_authenticity_token %>'),
+        '_http_accept': 'application/javascript'
+      },
+      cancelImg       : '/images/cancel.png',
+      onComplete : function (event, ID, fileObj, response, data) {
+        console.log(event, ID, fileObj, response, data);
+        $("#images").append(response);
+      }
+    });
+  });
+</script>
