@@ -3,11 +3,5 @@
 <%= render 'form' %>
 
 <ul id="images">
-  <% @images.each do |image| %>
-    <li>
-      <%= image_tag image.avatar.thumb.url if image.avatar? %>
-      <%= image.title %>
-      <%= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete %>
-    </li>
-  <% end %>
+  <%= render :partial => "list_item", :collection => @images, :as => :image %>
 </ul>

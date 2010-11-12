@@ -42,12 +42,13 @@ class ImagesController < ApplicationController
   # POST /images.xml
   def create
     @image = Image.new(params[:image])
-    @image.avatar = params[:image][:file]
+    @image.avatar = request.env['rack.input'].read
 
     respond_to do |format|
       if @image.save
         format.html { redirect_to(@image, :notice => 'Image was successfully created.') }
         format.xml  { render :xml => @image, :status => :created, :location => @image }
+        format.js   { render :partial => "list_item", :locals => {:image => @image} }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
