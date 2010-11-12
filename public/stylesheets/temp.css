@@ -10,6 +10,8 @@ body {margin:60px;}
 /* uploader
 */
 .placeholder {float: left; background:#ddd; border:1px solid #ccc; height: 60px; width: 60px; margin:20px 20px 20px 0;}
+a.destroy_all {background:red; color:#fff; display: block; float: right;}
+#clear_queue {display: inline-block; margin-bottom: 10px;}
 
 #upload_queue {margin:20px 0;}
 .uploadifyQueueItem {

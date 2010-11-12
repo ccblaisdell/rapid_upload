@@ -89,5 +89,6 @@ class ImagesController < ApplicationController
     for image in @images
       image.destroy
     end
+    redirect_to(images_url)
   end
 end

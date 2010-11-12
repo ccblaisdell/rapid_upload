@@ -27,5 +27,10 @@
         $("#images").append(response);
       }
     });
+    
+    $('#clear_queue').click(function(e){
+      e.preventDefault();
+      $('#image_avatar').uploadifyClearQueue();
+    })
   });
 </script>
