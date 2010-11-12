@@ -10,3 +10,29 @@ body {margin:60px;}
 /* uploader
 */
 .placeholder {float: left; background:#ddd; border:1px solid #ccc; height: 60px; width: 60px; margin:20px 20px 20px 0;}
+
+#upload_queue {margin:20px 0;}
+.uploadifyQueueItem {
+	margin-bottom: 5px;
+}
+.uploadifyError {
+	background-color: #FDE5DD !important;
+	border: 2px solid #FBCBBC !important;
+}
+.uploadifyQueueItem .cancel {
+	display: inline-block; margin:0 10px -5px 0;
+}
+.uploadifyQueue .completed {
+	color:#999;
+}
+.uploadifyProgress {
+	background-color: #E5E5E5;
+	margin-top: 10px;
+	width: 300px;
+}
+.uploadifyProgressBar {
+	background-color: #0099FF;
+	height: 3px;
+	width: 1px;
+}
+.percentage {font-size:85%; color:#777;}

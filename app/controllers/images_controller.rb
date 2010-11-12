@@ -83,4 +83,11 @@ class ImagesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def destroy_all
+    @images = Image.all
+    for image in @images
+      image.destroy
+    end
+  end
 end

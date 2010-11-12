@@ -11,6 +11,11 @@
       multi           : true,
       fileDataName    : 'image[avatar]',
       auto            : true,
+      displayData     : 'speed',
+      fileExt         : '*.jpg;*.JPG;*.jpeg;*.JPEG;*.gif;*.GIF;*.png;*.PNG;',
+      fileDesc        : 'Image Files',
+      queueID         : 'upload_queue',
+      removeCompleted : false,
       scriptData      : {
         'session_encoded': '<%= session %>', 
         'authenticity_token': encodeURIComponent('<%= u form_authenticity_token %>'),
