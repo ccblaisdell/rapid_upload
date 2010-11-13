@@ -17,6 +17,19 @@ RapidUpload::Application.configure do
 
   # If you have no front-end server that supports something like X-Sendfile,
   # just comment this out and Rails will serve the files
+  
+  
+  # dev mode stuff
+  # Log error messages when you accidentally call methods on nil.
+  config.whiny_nils = true
+
+  # Show full error reports and disable caching
+  config.consider_all_requests_local       = true
+  config.action_view.debug_rjs             = true
+  config.action_controller.perform_caching = false
+  
+  
+  
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
