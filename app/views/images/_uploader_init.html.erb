@@ -2,7 +2,7 @@
   $(function() {  
     // encode the session into a Flash-save format
     <% arr = [] %>
-    <% request.env['HTTP_COOKIE'].each_char{|c| arr.push(c[0].to_s)} %>
+    <% request.env['HTTP_COOKIE'].each_char{|c| arr.push(c[0].to_s)} unless request.env['HTTP_COOKIE'].nil? %>
     <% session = arr.join("x") %>
 
     $('#image_avatar').uploadify ({
