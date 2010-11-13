@@ -1,3 +1,7 @@
+<div id="uploader">
+  
+</div>
+
 <noscript>
   <%= form_for(@image, :html => { :multipart => true }) do |f| %>
     <% if @image.errors.any? %>
@@ -21,11 +25,7 @@
     </div>
     <div class="field">
       <%= f.label :avatar, "Upload local file:" %><br />
-</noscript>
-
     <%= f.file_field :avatar %>
-    
-<noscript>
       <%= f.hidden_field :avatar_cache %>
     </div>
     <div class="actions">

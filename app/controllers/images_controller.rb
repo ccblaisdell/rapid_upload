@@ -42,13 +42,36 @@ class ImagesController < ApplicationController
   # POST /images.xml
   def create
     @image = Image.new(params[:image])
-    @image.title = params[:image][:title] || params[:Filename]
+    @image.title = params[:image][:title] || params[:qqfile]
+    
+    #######
+    # get file name
+    file_name = params[:qqfile]
+    # get file content type
+    att_content_type = (request.content_type.to_s == "") ? "application/octet-stream" : request.content_type.to_s
+    # create temporal file
+    file = Tempfile.new(file_name)
+    # put data into this file from raw post request
+    file.print request.raw_post
+   
+    # create several required methods for this temporal file
+    Tempfile.send(:define_method, "content_type") {return att_content_type}
+    Tempfile.send(:define_method, "original_filename") {return file_name}
+
+    @image.avatar = file
+    #########
 
     respond_to do |format|
       if @image.save
         format.html { redirect_to(@image, :notice => 'Image was successfully created.') }
         format.xml  { render :xml => @image, :status => :created, :location => @image }
-        format.js   { render :partial => "list_item", :locals => {:image => @image},  :status => 200 }
+        format.js do
+          render :template => "images/list_item.json.erb", :locals => {
+            :id => @image.id,
+            :partial => "images/list_item.html.erb",
+            :locals => {:image => @image} 
+          }, :status => 200
+        end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
